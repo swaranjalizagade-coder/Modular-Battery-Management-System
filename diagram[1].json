@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "author": "BMS Task 6",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 100, "left": 250, "attrs": {} },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 75.5,
+      "left": -96.2,
+      "attrs": { "value": "512" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot2",
+      "top": 181.1,
+      "left": -96.2,
+      "attrs": { "value": "525" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot3",
+      "top": 277.1,
+      "left": -96.2,
+      "attrs": { "value": "540" }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot4",
+      "top": 373.1,
+      "left": -96.2,
+      "attrs": { "value": "550" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnAck",
+      "top": 188.6,
+      "left": 460.8,
+      "attrs": { "color": "blue", "label": "ACK" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnWarn",
+      "top": 121.4,
+      "left": 460.8,
+      "attrs": { "color": "yellow", "label": "WARNING" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnCrit",
+      "top": 54.2,
+      "left": 460.8,
+      "attrs": { "color": "red", "label": "CRITICAL" }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled",
+      "top": 415.94,
+      "left": 499.43,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay",
+      "top": 269,
+      "left": 403.2,
+      "attrs": { "transistor": "pnp" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledGreen",
+      "top": 500,
+      "left": 400,
+      "attrs": { "color": "green" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledYellow",
+      "top": 500,
+      "left": 500,
+      "attrs": { "color": "yellow" }
+    },
+    { "type": "wokwi-led", "id": "ledRed", "top": 500, "left": 600, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "resGreen",
+      "top": 570,
+      "left": 400,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "resYellow",
+      "top": 570,
+      "left": 500,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "resRed",
+      "top": 570,
+      "left": 600,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "relayLed",
+      "top": 284.4,
+      "left": 723.8,
+      "attrs": { "color": "blue" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "relayRes",
+      "top": 359.15,
+      "left": 681.6,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "pot1:SIG", "esp:D32", "blue", [ "v28.8", "h312.2" ] ],
+    [ "pot1:VCC", "esp:3V3", "red", [ "v19.2", "h398.5" ] ],
+    [ "pot1:GND", "esp:GND.1", "black", [ "v48", "h418.5" ] ],
+    [ "pot2:SIG", "esp:D33", "blue", [] ],
+    [ "pot2:VCC", "esp:3V3", "red", [] ],
+    [ "pot2:GND", "esp:GND.1", "black", [] ],
+    [ "pot3:SIG", "esp:D34", "blue", [] ],
+    [ "pot3:VCC", "esp:3V3", "red", [] ],
+    [ "pot3:GND", "esp:GND.1", "black", [] ],
+    [ "pot4:SIG", "esp:D35", "blue", [] ],
+    [ "pot4:VCC", "esp:3V3", "red", [] ],
+    [ "pot4:GND", "esp:GND.1", "black", [] ],
+    [ "oled:SDA", "esp:D21", "blue", [] ],
+    [ "oled:SCL", "esp:D22", "green", [] ],
+    [ "oled:VCC", "esp:VIN", "red", [] ],
+    [ "oled:GND", "esp:GND.1", "black", [] ],
+    [ "btnAck:1.l", "esp:D25", "blue", [] ],
+    [ "btnAck:2.l", "esp:GND.1", "black", [] ],
+    [ "btnWarn:1.l", "esp:D26", "yellow", [] ],
+    [ "btnWarn:2.l", "esp:GND.1", "black", [] ],
+    [ "btnCrit:1.l", "esp:D27", "red", [] ],
+    [ "btnCrit:2.l", "esp:GND.1", "black", [] ],
+    [ "relay:IN", "esp:D23", "orange", [] ],
+    [ "relay:VCC", "esp:VIN", "red", [] ],
+    [ "relay:GND", "esp:GND.1", "black", [] ],
+    [ "relay:COM", "esp:3V3", "red", [] ],
+    [ "relay:NO", "relayLed:A", "blue", [] ],
+    [ "relayLed:C", "relayRes:1", "blue", [] ],
+    [ "relayRes:2", "esp:GND.1", "black", [] ],
+    [ "ledGreen:A", "esp:RX2", "green", [] ],
+    [ "ledGreen:C", "resGreen:1", "green", [] ],
+    [ "resGreen:2", "esp:GND.1", "black", [] ],
+    [ "ledYellow:A", "esp:TX2", "yellow", [] ],
+    [ "ledYellow:C", "resYellow:1", "yellow", [] ],
+    [ "resYellow:2", "esp:GND.1", "black", [] ],
+    [ "ledRed:A", "esp:D18", "red", [] ],
+    [ "ledRed:C", "resRed:1", "red", [] ],
+    [ "resRed:2", "esp:GND.1", "black", [] ]
+  ],
+  "dependencies": {}
+}
